@@ -49,7 +49,10 @@ function onPlayerAdded(player)
         local context = {
             message = message,
             author = player,
-            time = os.time()
+            time = os.time(),
+            reply = function(message)
+                Client.send(player.DisplayName .. " - " .. message)
+            end
         }
 
         Client.on_message:Fire(context)
